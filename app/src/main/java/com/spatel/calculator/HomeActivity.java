@@ -14,9 +14,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener,View.OnFocusChangeListener {
     private EditText edtBinary,edtHex,edtOctel,edtDesimal;
     private Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn00,btnDot,btnA,btnB,btnC,btnD,btnE,btnF,btnBack,btnSave,btnHistory;
+    private EditText isHoverAndGetId;
     private LinearLayout llKeypad;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,11 +76,16 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btnHistory.setOnClickListener(this);
         btnSave.setOnClickListener(this);
 
+        edtBinary.setOnFocusChangeListener(this);
+        edtOctel.setOnFocusChangeListener(this);
+        edtHex.setOnFocusChangeListener(this);
+        edtDesimal.setOnFocusChangeListener(this);
+
         edtBinary.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2){}
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2){ }
             @Override
-            public void afterTextChanged(Editable editable) {}
+            public void afterTextChanged(Editable editable) { }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -91,21 +97,21 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         edtDesimal.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2){}
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2){ }
             @Override
-            public void afterTextChanged(Editable editable) {}
+            public void afterTextChanged(Editable editable) { }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(!charSequence.equals("")){
-                    Log.d("tg","edittext not empty");
+                if(!charSequence.equals("")) {
+
                 }
             }
         });
 
         edtHex.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2){}
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2){ }
             @Override
             public void afterTextChanged(Editable editable) {}
 
@@ -119,7 +125,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         edtOctel.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2){}
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2){ }
             @Override
             public void afterTextChanged(Editable editable) {}
 
@@ -134,52 +140,95 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+        String text = isHoverAndGetId.getText().toString().trim();
         switch(view.getId()) {
             case R.id.btn0:
+                isHoverAndGetId.setText(text+"0");
                 Log.d("tg", "btn0");
                 break;
             case R.id.btn1:
+                isHoverAndGetId.setText(text+"1");
                 break;
             case R.id.btn2:
+                isHoverAndGetId.setText(text+"2");
                 break;
             case R.id.btn3:
+                isHoverAndGetId.setText(text+"3");
                 break;
             case R.id.btn4:
+                isHoverAndGetId.setText(text+"4");
                 break;
             case R.id.btn5:
+                isHoverAndGetId.setText(text+"5");
                 break;
             case R.id.btn6:
+                isHoverAndGetId.setText(text+"6");
                 Log.d("tg", "btn6");
                 break;
             case R.id.btn7:
+                isHoverAndGetId.setText(text+"7");
                 break;
             case R.id.btn8:
+                isHoverAndGetId.setText(text+"8");
                 break;
             case R.id.btn9:
+                isHoverAndGetId.setText(text+"9");
                 break;
             case R.id.btn00:
+                isHoverAndGetId.setText(text+"00");
                 break;
             case R.id.btnDot:
+                isHoverAndGetId.setText(text+".");
                 break;
             case R.id.btnA:
+                isHoverAndGetId.setText(text+"A");
                 Log.d("tg", "btnA");
                 break;
             case R.id.btnB:
+                isHoverAndGetId.setText(text+"B");
                 break;
             case R.id.btnC:
+                isHoverAndGetId.setText(text+"C");
                 break;
             case R.id.btnD:
+                isHoverAndGetId.setText(text+"D");
                 break;
             case R.id.btnE:
+                isHoverAndGetId.setText(text+"E");
                 break;
             case R.id.btnF:
+                isHoverAndGetId.setText(text+"F");
                 break;
             case R.id.btnSave:
                 break;
             case R.id.btnBack:
+                String s = text.substring(0,text.length()-2);
+                isHoverAndGetId.setText(s);
                 break;
             case R.id.btnHistory:
                 Log.d("tg", "btnHistory");
+                break;
+        }
+    }
+
+    @Override
+    public void onFocusChange(View view, boolean b) {
+        switch (view.getId()){
+            case R.id.edtBinary:
+                isHoverAndGetId = edtBinary;
+                Log.d("tg", "edtBinary");
+                break;
+            case R.id.edtDesimal:
+                isHoverAndGetId = edtDesimal;
+                Log.d("tg", "edtDesimal");
+                break;
+            case R.id.edtOctel:
+                isHoverAndGetId = edtOctel;
+                Log.d("tg", "edtOctel");
+                break;
+            case R.id.edtHex:
+                isHoverAndGetId = edtHex;
+                Log.d("tg", "edtHex");
                 break;
         }
     }
