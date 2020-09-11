@@ -2,27 +2,23 @@ package com.spatel.calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener,View.OnFocusChangeListener {
     private EditText edtBinary,edtHex,edtOctel,edtDesimal;
-    private Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn00,btnDot,btnA,btnB,btnC,btnD,btnE,btnF,btnBack,btnSave,btnHistory;
+    private Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnA,btnB,btnC,btnD,btnE,btnF,btnBack,btnSave,btnHistory;
     private EditText isHoverAndGetId;
-    private LinearLayout llKeypad;
     private Converter converter;
     private String desimal,binary,hexa,octel;
     private Boolean flag = true;
-    private Boolean b,o,h,d;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,16 +41,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btn7 = findViewById(R.id.btn7);
         btn8 = findViewById(R.id.btn8);
         btn9 = findViewById(R.id.btn9);
-        btn00 = findViewById(R.id.btn00);
-        btnDot = findViewById(R.id.btnDot);
         btnA = findViewById(R.id.btnA);
         btnB = findViewById(R.id.btnB);
         btnC = findViewById(R.id.btnC);
         btnD = findViewById(R.id.btnD);
         btnE = findViewById(R.id.btnE);
         btnF = findViewById(R.id.btnF);
-        btnSave = findViewById(R.id.btnSave);
-        btnHistory = findViewById(R.id.btnHistory);
         btnBack = findViewById(R.id.btnBack);
 
         btn0.setOnClickListener(this);
@@ -67,8 +59,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btn7.setOnClickListener(this);
         btn8.setOnClickListener(this);
         btn9.setOnClickListener(this);
-        btn00.setOnClickListener(this);
-        btnDot.setOnClickListener(this);
         btnA.setOnClickListener(this);
         btnB.setOnClickListener(this);
         btnC.setOnClickListener(this);
@@ -76,8 +66,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btnE.setOnClickListener(this);
         btnF.setOnClickListener(this);
         btnBack.setOnClickListener(this);
-        btnHistory.setOnClickListener(this);
-        btnSave.setOnClickListener(this);
 
         edtBinary.setOnFocusChangeListener(this);
         edtOctel.setOnFocusChangeListener(this);
@@ -86,6 +74,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         // create Instance of a object
         converter = new Converter();
+
+        //Intialization
+        isHoverAndGetId = edtBinary;
 
         edtBinary.addTextChangedListener(new TextWatcher() {
             @Override
@@ -169,81 +160,76 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         edtHex.setText(hexa);
         edtOctel.setText(octel);
         edtBinary.setText(binary);
+        isHoverAndGetId.setSelection(isHoverAndGetId.getText().length());
         flag = true;
     }
 
     @Override
     public void onClick(View view) {
         String text = isHoverAndGetId.getText().toString().trim();
-        Log.d("bi",text);
-        switch(view.getId()) {
+        if(text.isEmpty()){
+            text = "";
+        }
+        int id = view.getId();
+        String value = "";
+        switch(id) {
             case R.id.btn0:
-                isHoverAndGetId.setText(text+"0");
-                Log.d("tg", "btn0");
+                value = "0";
                 break;
             case R.id.btn1:
-                isHoverAndGetId.setText(text+"1");
+                value = "1";
                 break;
             case R.id.btn2:
-                isHoverAndGetId.setText(text+"2");
+                value = "2";
                 break;
             case R.id.btn3:
-                isHoverAndGetId.setText(text+"3");
+                value = "3";
                 break;
             case R.id.btn4:
-                isHoverAndGetId.setText(text+"4");
+                value = "4";
                 break;
             case R.id.btn5:
-                isHoverAndGetId.setText(text+"5");
+                value = "5";
                 break;
             case R.id.btn6:
-                isHoverAndGetId.setText(text+"6");
-                Log.d("tg", "btn6");
+                value = "6";
                 break;
             case R.id.btn7:
-                isHoverAndGetId.setText(text+"7");
+                value = "7";
                 break;
             case R.id.btn8:
-                isHoverAndGetId.setText(text+"8");
+                value = "8";
                 break;
             case R.id.btn9:
-                isHoverAndGetId.setText(text+"9");
-                break;
-            case R.id.btn00:
-                isHoverAndGetId.setText(text+"00");
-                break;
-            case R.id.btnDot:
-                isHoverAndGetId.setText(text+".");
+                value = "9";
                 break;
             case R.id.btnA:
-                isHoverAndGetId.setText(text+"A");
-                Log.d("tg", "btnA");
+                value = "A";
                 break;
             case R.id.btnB:
-                isHoverAndGetId.setText(text+"B");
+                value = "B";
                 break;
             case R.id.btnC:
-                isHoverAndGetId.setText(text+"C");
+                value = "C";
                 break;
             case R.id.btnD:
-                isHoverAndGetId.setText(text+"D");
+                value = "D";
                 break;
             case R.id.btnE:
-                isHoverAndGetId.setText(text+"E");
+                value = "E";
                 break;
             case R.id.btnF:
-                isHoverAndGetId.setText(text+"F");
-                break;
-            case R.id.btnSave:
+                value = "F";
                 break;
             case R.id.btnBack:
-                String s = text.substring(0,text.length()-1);
-                isHoverAndGetId.setText(s);
-                break;
-            case R.id.btnHistory:
-                Log.d("tg", "btnHistory");
+                if(!text.equals("")){
+                    text = text.substring(0,text.length()-1);
+                    value = "";
+                    isHoverAndGetId.setText(text);
+                }
                 break;
         }
+        isHoverAndGetId.append(value);
     }
 
     @Override
