@@ -19,6 +19,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn00,btnDot,btnA,btnB,btnC,btnD,btnE,btnF,btnBack,btnSave,btnHistory;
     private EditText isHoverAndGetId;
     private LinearLayout llKeypad;
+    private Converter converter;
+    private String desimal,binary,hexa,octel;
+    private Boolean flag = true;
+    private Boolean b,o,h,d;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +35,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         edtOctel = findViewById(R.id.edtOctel);
 
         // button key refrencce
-
         btn0 = findViewById(R.id.btn0);
         btn1 = findViewById(R.id.btn1);
         btn2 = findViewById(R.id.btn2);
@@ -81,6 +84,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         edtHex.setOnFocusChangeListener(this);
         edtDesimal.setOnFocusChangeListener(this);
 
+        // create Instance of a object
+        converter = new Converter();
+
         edtBinary.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2){ }
@@ -89,8 +95,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(!charSequence.equals("")){
-                    Log.d("tg","edittext not empty");
+                if(flag.equals(true)){
+                    flag = false;
+                    binary = edtBinary.getText().toString().trim();
+                    desimal = converter.binaryToDesimal(binary);
+                    octel = converter.desimalToOctel(desimal);
+                    hexa = converter.desimalToHexa(desimal);
+                    setTextOnEdittext(desimal,binary,octel,hexa);
                 }
             }
         });
@@ -103,8 +114,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(!charSequence.equals("")) {
-
+                if(flag.equals(true)){
+                    flag = false;
+                    desimal = edtDesimal.getText().toString().trim();
+                    binary = converter.desimalToBinary(desimal);
+                    octel = converter.desimalToOctel(desimal);
+                    hexa = converter.desimalToHexa(desimal);
+                    setTextOnEdittext(desimal,binary,octel,hexa);
                 }
             }
         });
@@ -113,12 +129,17 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2){ }
             @Override
-            public void afterTextChanged(Editable editable) {}
+            public void afterTextChanged(Editable editable) { }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(!charSequence.equals("")){
-                    Log.d("tg","edittext not empty");
+                if(flag.equals(true)){
+                    flag = false;
+                    hexa = edtHex.getText().toString().trim();
+                    desimal = converter.hexaToDesimal(hexa);
+                    octel = converter.desimalToOctel(desimal);
+                    binary = converter.desimalToBinary(desimal);
+                    setTextOnEdittext(desimal,binary,octel,hexa);
                 }
             }
         });
@@ -127,20 +148,34 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2){ }
             @Override
-            public void afterTextChanged(Editable editable) {}
+            public void afterTextChanged(Editable editable) { }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(!charSequence.equals("")){
-                    Log.d("tg","edittext not empty");
+                if(flag.equals(true)){
+                    flag = false;
+                    octel = edtOctel.getText().toString().trim();
+                    desimal = converter.octelToDesimal(octel);
+                    binary = converter.desimalToBinary(desimal);
+                    hexa = converter.desimalToHexa(desimal);
+                    setTextOnEdittext(desimal,binary,octel,hexa);
                 }
             }
         });
     }
 
+    private void setTextOnEdittext(String desimal, String binary, String octel, String hexa) {
+        edtDesimal.setText(desimal);
+        edtHex.setText(hexa);
+        edtOctel.setText(octel);
+        edtBinary.setText(binary);
+        flag = true;
+    }
+
     @Override
     public void onClick(View view) {
         String text = isHoverAndGetId.getText().toString().trim();
+        Log.d("bi",text);
         switch(view.getId()) {
             case R.id.btn0:
                 isHoverAndGetId.setText(text+"0");
@@ -202,7 +237,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnSave:
                 break;
             case R.id.btnBack:
-                String s = text.substring(0,text.length()-2);
+                String s = text.substring(0,text.length()-1);
                 isHoverAndGetId.setText(s);
                 break;
             case R.id.btnHistory:
