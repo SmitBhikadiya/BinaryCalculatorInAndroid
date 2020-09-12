@@ -93,18 +93,24 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(flag.equals(true)){
-                    flag = false;
                     binary = edtBinary.getText().toString().trim();
-                    desimal = converter.binaryToDesimal(binary);
-                    octel = converter.desimalToOctel(desimal);
-                    hexa = converter.desimalToHexa(desimal);
-                    if(desimal.equals("")){
-                        isHoverAndGetId.setError("Wrong Input");
+                    if(binary.length() > 63){
+                        edtBinary.setError("You reached maximum lenght");
+                        edtOctel.setEnabled(false);
+                        edtHex.setEnabled(false);
+                        edtDesimal.setEnabled(false);
                     }
-                    else{
-                        isHoverAndGetId.setError(null);
+                    else {
+                        flag = false;
+                        edtBinary.setError(null);
+                        edtOctel.setEnabled(true);
+                        edtHex.setEnabled(true);
+                        edtDesimal.setEnabled(true);
+                        desimal = converter.binaryToDesimal(binary);
+                        octel = converter.desimalToOctel(desimal);
+                        hexa = converter.desimalToHexa(desimal);
+                        setTextOnEdittext(desimal, binary, octel, hexa);
                     }
-                    setTextOnEdittext(desimal,binary,octel,hexa);
                 }
             }
         });
@@ -118,18 +124,24 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(flag.equals(true)){
-                    flag = false;
                     desimal = edtDesimal.getText().toString().trim();
-                    binary = converter.desimalToBinary(desimal);
-                    octel = converter.desimalToOctel(desimal);
-                    hexa = converter.desimalToHexa(desimal);
-                    if(binary.equals("")){
-                        isHoverAndGetId.setError("Wrong Input");
+                    if(desimal.length() > 19){
+                        edtDesimal.setError("You reached maximum lenght");
+                        edtOctel.setEnabled(false);
+                        edtHex.setEnabled(false);
+                        edtBinary.setEnabled(false);
                     }
-                    else{
-                        isHoverAndGetId.setError(null);
+                    else {
+                        flag = false;
+                        edtDesimal.setError(null);
+                        edtOctel.setEnabled(true);
+                        edtBinary.setEnabled(true);
+                        edtHex.setEnabled(true);
+                        binary = converter.desimalToBinary(desimal);
+                        octel = converter.desimalToOctel(desimal);
+                        hexa = converter.desimalToHexa(desimal);
+                        setTextOnEdittext(desimal,binary,octel,hexa);
                     }
-                    setTextOnEdittext(desimal,binary,octel,hexa);
                 }
             }
         });
@@ -143,19 +155,24 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(flag.equals(true)){
-                    flag = false;
                     hexa = edtHex.getText().toString().trim();
-                    desimal = converter.hexaToDesimal(hexa);
-                    Log.d("tg",desimal);
-                    binary = converter.desimalToBinary(desimal);
-                    octel = converter.desimalToOctel(desimal);
-                    if(desimal.equals("")){
-                        isHoverAndGetId.setError("Wrong Input");
+                    if(hexa.length() > 15){
+                        edtHex.setError("You reached maximum lenght");
+                        edtOctel.setEnabled(false);
+                        edtDesimal.setEnabled(false);
+                        edtBinary.setEnabled(false);
                     }
-                    else{
-                        isHoverAndGetId.setError(null);
+                    else {
+                        flag = false;
+                        edtHex.setError(null);
+                        edtOctel.setEnabled(true);
+                        edtBinary.setEnabled(true);
+                        edtDesimal.setEnabled(true);
+                        desimal = converter.hexaToDesimal(hexa);
+                        binary = converter.desimalToBinary(desimal);
+                        octel = converter.desimalToOctel(desimal);
+                        setTextOnEdittext(desimal, binary, octel, hexa);
                     }
-                    setTextOnEdittext(desimal,binary,octel,hexa);
                 }
             }
         });
@@ -169,18 +186,24 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(flag.equals(true)){
-                    flag = false;
                     octel = edtOctel.getText().toString().trim();
-                    desimal = converter.octelToDesimal(octel);
-                    binary = converter.desimalToBinary(desimal);
-                    hexa = converter.desimalToHexa(desimal);
-                    if(desimal.equals("")){
-                        isHoverAndGetId.setError("Wrong Input");
+                    if(octel.length() > 21){
+                        edtOctel.setError("You reached maximum lenght");
+                        edtBinary.setEnabled(false);
+                        edtHex.setEnabled(false);
+                        edtDesimal.setEnabled(false);
                     }
-                    else{
-                        isHoverAndGetId.setError(null);
+                    else {
+                        flag = false;
+                        edtOctel.setError(null);
+                        edtBinary.setEnabled(true);
+                        edtHex.setEnabled(true);
+                        edtDesimal.setEnabled(true);
+                        desimal = converter.octelToDesimal(octel);
+                        binary = converter.desimalToBinary(desimal);
+                        hexa = converter.desimalToHexa(desimal);
+                        setTextOnEdittext(desimal, binary, octel, hexa);
                     }
-                    setTextOnEdittext(desimal,binary,octel,hexa);
                 }
             }
         });
@@ -188,7 +211,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     private void setTextOnEdittext(String desimal, String binary, String octel, String hexa) {
         edtDesimal.setText(desimal);
-        edtHex.setText(hexa);
+        edtHex.setText(hexa.toUpperCase());
         edtOctel.setText(octel);
         edtBinary.setText(binary);
         isHoverAndGetId.setSelection(isHoverAndGetId.getText().length());
@@ -269,38 +292,172 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.edtBinary:
                 isHoverAndGetId = edtBinary;
                 hoverTeextId = txtb;
-                setBackground(b);
+                setBackground(b,edtBinary);
                 Log.d("tg", "edtBinary");
                 break;
             case R.id.edtDesimal:
                 isHoverAndGetId = edtDesimal;
                 hoverTeextId = txtd;
-                setBackground(b);
+                setBackground(b,edtDesimal);
                 Log.d("tg", "edtDesimal");
                 break;
             case R.id.edtOctel:
                 isHoverAndGetId = edtOctel;
                 hoverTeextId = txto;
-                setBackground(b);
+                setBackground(b,edtOctel);
                 Log.d("tg", "edtOctel");
                 break;
             case R.id.edtHex:
                 isHoverAndGetId = edtHex;
                 hoverTeextId = txth;
-                setBackground(b);
+                setBackground(b,edtHex);
                 Log.d("tg", "edtHex");
                 break;
         }
     }
 
-    private void setBackground(boolean b) {
+    private void setBackground(boolean b,EditText e) {
        if(!b){
            hoverTeextId.setBackgroundColor(getResources().getColor(R.color.colorAccent));
            hoverTeextId.setTextColor(getResources().getColor(R.color.colorDark));
+           if(e == edtBinary){
+                binaryUnSetBg();
+           }
+           else if(e == edtDesimal){
+                desimalUnSetBg();
+           }
+           else if(e == edtHex){
+                hexaUnSetBg();
+           }
+           else{
+                octelUnSetBg();
+           }
        }
        else{
-           hoverTeextId.setBackgroundColor(getResources().getColor(R.color.colorDark));
-           hoverTeextId.setTextColor(getResources().getColor(R.color.colorAccent));
+           hoverTeextId.setBackgroundColor(getResources().getColor(R.color.colorMiniRed));
+           hoverTeextId.setTextColor(getResources().getColor(R.color.colorWhite));
+           if(e == edtBinary){
+               binarySetBg();
+           }
+           else if(e == edtDesimal){
+               desimalSetBg();
+           }
+           else if(e == edtHex){
+                hexaSetBg();
+           }
+           else{
+                octelSetBg();
+           }
        }
+    }
+
+    private void octelUnSetBg() {
+        binaryUnSetBg();
+        unSetBackgroundColorRed(btn2);
+        unSetBackgroundColorRed(btn3);
+        unSetBackgroundColorRed(btn4);
+        unSetBackgroundColorRed(btn5);
+        unSetBackgroundColorRed(btn6);
+        unSetBackgroundColorRed(btn7);
+        unSetTextColorWhite(btn2);
+        unSetTextColorWhite(btn3);
+        unSetTextColorWhite(btn4);
+        unSetTextColorWhite(btn5);
+        unSetTextColorWhite(btn6);
+        unSetTextColorWhite(btn7);
+    }
+
+    private void hexaUnSetBg() {
+        desimalUnSetBg();
+        unSetBackgroundColorRed(btnA);
+        unSetBackgroundColorRed(btnB);
+        unSetBackgroundColorRed(btnC);
+        unSetBackgroundColorRed(btnD);
+        unSetBackgroundColorRed(btnE);
+        unSetBackgroundColorRed(btnF);
+        unSetTextColorWhite(btnA);
+        unSetTextColorWhite(btnB);
+        unSetTextColorWhite(btnC);
+        unSetTextColorWhite(btnD);
+        unSetTextColorWhite(btnE);
+        unSetTextColorWhite(btnF);
+    }
+
+    private void desimalUnSetBg() {
+        octelUnSetBg();
+        unSetBackgroundColorRed(btn8);
+        unSetBackgroundColorRed(btn9);
+        unSetTextColorWhite(btn8);
+        unSetTextColorWhite(btn9);
+    }
+
+    private void binaryUnSetBg() {
+        unSetBackgroundColorRed(btn0);
+        unSetBackgroundColorRed(btn1);
+        unSetTextColorWhite(btn0);
+        unSetTextColorWhite(btn1);
+    }
+
+    private void octelSetBg() {
+        binarySetBg();
+        setBackgroundColorRed(btn2);
+        setBackgroundColorRed(btn3);
+        setBackgroundColorRed(btn4);
+        setBackgroundColorRed(btn5);
+        setBackgroundColorRed(btn6);
+        setBackgroundColorRed(btn7);
+        setTextColorWhite(btn2);
+        setTextColorWhite(btn3);
+        setTextColorWhite(btn4);
+        setTextColorWhite(btn5);
+        setTextColorWhite(btn6);
+        setTextColorWhite(btn7);
+    }
+
+    private void hexaSetBg(){
+        desimalSetBg();
+        setBackgroundColorRed(btnA);
+        setBackgroundColorRed(btnB);
+        setBackgroundColorRed(btnC);
+        setBackgroundColorRed(btnD);
+        setBackgroundColorRed(btnE);
+        setBackgroundColorRed(btnF);
+        setTextColorWhite(btnA);
+        setTextColorWhite(btnB);
+        setTextColorWhite(btnC);
+        setTextColorWhite(btnD);
+        setTextColorWhite(btnE);
+        setTextColorWhite(btnF);
+    }
+
+    private void desimalSetBg() {
+        octelSetBg();
+        setBackgroundColorRed(btn8);
+        setBackgroundColorRed(btn9);
+        setTextColorWhite(btn8);
+        setTextColorWhite(btn9);
+    }
+
+    private void binarySetBg() {
+        setBackgroundColorRed(btn0);
+        setBackgroundColorRed(btn1);
+        setTextColorWhite(btn0);
+        setTextColorWhite(btn1);
+    }
+
+    private void setTextColorWhite(Button e) {
+        e.setTextColor(getResources().getColor(R.color.colorWhite));
+    }
+
+    private void setBackgroundColorRed(Button e) {
+        e.setBackgroundColor(getResources().getColor(R.color.colorMiniRed));
+    }
+
+    private void unSetTextColorWhite(Button e) {
+        e.setTextColor(getResources().getColor(R.color.colorAccent));
+    }
+
+    private void unSetBackgroundColorRed(Button e) {
+        e.setBackground(getResources().getDrawable(R.drawable.btn_keypad_shape));
     }
 }
