@@ -2,21 +2,21 @@ package com.spatel.calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener,View.OnFocusChangeListener {
     private EditText edtBinary,edtHex,edtOctel,edtDesimal;
     private Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnA,btnB,btnC,btnD,btnE,btnF,btnBack,btnSave,btnHistory;
     private EditText isHoverAndGetId;
     private Converter converter;
+    private TextView txtb,txtd,txto,txth,hoverTeextId;
     private String desimal,binary,hexa,octel;
     private Boolean flag = true;
     @Override
@@ -48,6 +48,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btnE = findViewById(R.id.btnE);
         btnF = findViewById(R.id.btnF);
         btnBack = findViewById(R.id.btnBack);
+
+        // texrt view refrence
+        txtb = findViewById(R.id.txtBin);
+        txtd = findViewById(R.id.txtDes);
+        txth = findViewById(R.id.txtHex);
+        txto = findViewById(R.id.txtOct);
 
         btn0.setOnClickListener(this);
         btn1.setOnClickListener(this);
@@ -92,6 +98,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     desimal = converter.binaryToDesimal(binary);
                     octel = converter.desimalToOctel(desimal);
                     hexa = converter.desimalToHexa(desimal);
+                    if(desimal.equals("")){
+                        isHoverAndGetId.setError("Wrong Input");
+                    }
+                    else{
+                        isHoverAndGetId.setError(null);
+                    }
                     setTextOnEdittext(desimal,binary,octel,hexa);
                 }
             }
@@ -111,6 +123,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     binary = converter.desimalToBinary(desimal);
                     octel = converter.desimalToOctel(desimal);
                     hexa = converter.desimalToHexa(desimal);
+                    if(binary.equals("")){
+                        isHoverAndGetId.setError("Wrong Input");
+                    }
+                    else{
+                        isHoverAndGetId.setError(null);
+                    }
                     setTextOnEdittext(desimal,binary,octel,hexa);
                 }
             }
@@ -128,8 +146,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     flag = false;
                     hexa = edtHex.getText().toString().trim();
                     desimal = converter.hexaToDesimal(hexa);
-                    octel = converter.desimalToOctel(desimal);
+                    Log.d("tg",desimal);
                     binary = converter.desimalToBinary(desimal);
+                    octel = converter.desimalToOctel(desimal);
+                    if(desimal.equals("")){
+                        isHoverAndGetId.setError("Wrong Input");
+                    }
+                    else{
+                        isHoverAndGetId.setError(null);
+                    }
                     setTextOnEdittext(desimal,binary,octel,hexa);
                 }
             }
@@ -149,6 +174,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     desimal = converter.octelToDesimal(octel);
                     binary = converter.desimalToBinary(desimal);
                     hexa = converter.desimalToHexa(desimal);
+                    if(desimal.equals("")){
+                        isHoverAndGetId.setError("Wrong Input");
+                    }
+                    else{
+                        isHoverAndGetId.setError(null);
+                    }
                     setTextOnEdittext(desimal,binary,octel,hexa);
                 }
             }
@@ -237,20 +268,39 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()){
             case R.id.edtBinary:
                 isHoverAndGetId = edtBinary;
+                hoverTeextId = txtb;
+                setBackground(b);
                 Log.d("tg", "edtBinary");
                 break;
             case R.id.edtDesimal:
                 isHoverAndGetId = edtDesimal;
+                hoverTeextId = txtd;
+                setBackground(b);
                 Log.d("tg", "edtDesimal");
                 break;
             case R.id.edtOctel:
                 isHoverAndGetId = edtOctel;
+                hoverTeextId = txto;
+                setBackground(b);
                 Log.d("tg", "edtOctel");
                 break;
             case R.id.edtHex:
                 isHoverAndGetId = edtHex;
+                hoverTeextId = txth;
+                setBackground(b);
                 Log.d("tg", "edtHex");
                 break;
         }
+    }
+
+    private void setBackground(boolean b) {
+       if(!b){
+           hoverTeextId.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+           hoverTeextId.setTextColor(getResources().getColor(R.color.colorDark));
+       }
+       else{
+           hoverTeextId.setBackgroundColor(getResources().getColor(R.color.colorDark));
+           hoverTeextId.setTextColor(getResources().getColor(R.color.colorAccent));
+       }
     }
 }
