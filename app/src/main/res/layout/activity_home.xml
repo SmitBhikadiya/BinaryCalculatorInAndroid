@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorDark"
+    android:background="@color/colorGray"
     android:focusableInTouchMode="false"
     tools:context=".HomeActivity">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,12 +23,14 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="40dp">
+            android:padding="10dp">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -42,6 +45,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="3"
                         android:background="@color/colorAccent"
+                        android:fontFamily="@font/aclonica"
                         android:gravity="center"
                         android:text="Bin"
                         android:textColor="@color/colorDark"
@@ -50,19 +54,35 @@
                     <EditText
                         android:id="@+id/edtBinary"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/btn_shape"
                         android:drawablePadding="10dp"
                         android:ems="10"
-                        android:focusable="auto"
-                        android:focusableInTouchMode="true"
+                        android:gravity="top|left"
                         android:hint="Binary"
-                        android:inputType="textMultiLine|numberDecimal"
+                        android:maxLines="5"
+                        android:minLines="1"
                         android:padding="15dp"
-                        android:singleLine="true"
                         android:textColor="@color/colorAccent"
                         android:textColorHint="@color/colorAccent"
+                        android:textSize="18sp" />
+
+                    <Button
+                        android:id="@+id/btnCb"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="3.2"
+                        android:background="@color/colorMiniRed"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:fontFamily="@font/aclonica"
+                        android:gravity="center"
+                        android:hint="copy the string"
+                        android:text="copy"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -78,6 +98,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="3"
                         android:background="@color/colorAccent"
+                        android:fontFamily="@font/aclonica"
                         android:gravity="center"
                         android:text="Des"
                         android:textColor="@color/colorDark"
@@ -86,7 +107,7 @@
                     <EditText
                         android:id="@+id/edtDesimal"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/btn_shape"
                         android:drawablePadding="10dp"
@@ -100,6 +121,21 @@
                         android:singleLine="true"
                         android:textColor="@color/colorAccent"
                         android:textColorHint="@color/colorAccent"
+                        android:textSize="18sp" />
+
+                    <Button
+                        android:id="@+id/btnCd"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="3.2"
+                        android:background="@color/colorMiniRed"
+                        android:fontFamily="@font/aclonica"
+                        android:gravity="center"
+                        android:hint="copy the string"
+                        android:text="copy"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -115,6 +151,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="3"
                         android:background="@color/colorAccent"
+                        android:fontFamily="@font/aclonica"
                         android:gravity="center"
                         android:text="Oct"
                         android:textColor="@color/colorDark"
@@ -123,7 +160,7 @@
                     <EditText
                         android:id="@+id/edtOctel"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/btn_shape"
                         android:drawablePadding="10dp"
@@ -138,6 +175,21 @@
                         android:textColor="@color/colorAccent"
                         android:textColorHint="@color/colorAccent"
                         android:textSize="18sp" />
+
+                    <Button
+                        android:id="@+id/btnCo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="3.2"
+                        android:background="@color/colorMiniRed"
+                        android:fontFamily="@font/aclonica"
+                        android:gravity="center"
+                        android:hint="copy the string"
+                        android:text="copy"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -151,6 +203,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="3"
                         android:background="@color/colorAccent"
+                        android:fontFamily="@font/aclonica"
                         android:gravity="center"
                         android:text="Hex"
                         android:textColor="@color/colorDark"
@@ -159,7 +212,7 @@
                     <EditText
                         android:id="@+id/edtHex"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/btn_shape"
                         android:drawablePadding="10dp"
@@ -174,15 +227,23 @@
                         android:textColor="@color/colorAccent"
                         android:textColorHint="@color/colorAccent"
                         android:textSize="18sp" />
+
+                    <Button
+                        android:id="@+id/btnCh"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="3.2"
+                        android:background="@color/colorMiniRed"
+                        android:fontFamily="@font/aclonica"
+                        android:gravity="center"
+                        android:hint="copy the string"
+                        android:text="copy"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="18sp" />
                 </LinearLayout>
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/txtError"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:text="TextView" />
 
             <LinearLayout
                 android:id="@+id/llKeypad"
@@ -204,8 +265,9 @@
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
+                        android:fontFamily="@font/aclonica"
                         android:text="0"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorAccent"
                         android:textSize="24sp" />
 
                     <Button
@@ -214,8 +276,20 @@
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
+                        android:fontFamily="@font/aclonica"
                         android:text="1"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="24sp" />
+
+                    <Button
+                        android:id="@+id/btn2"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_keypad_shape"
+                        android:fontFamily="@font/aclonica"
+                        android:text="2"
+                        android:textColor="@color/colorAccent"
                         android:textSize="24sp" />
 
                     <Button
@@ -224,7 +298,8 @@
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@color/colorMiniRed"
-                        android:text="Back"
+                        android:fontFamily="@font/aclonica"
+                        android:text="Del"
                         android:textColor="@color/colorWhite"
                         android:textSize="24sp" />
                 </LinearLayout>
@@ -236,23 +311,14 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/btn2"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/btn_keypad_shape"
-                        android:text="2"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="24sp" />
-
-                    <Button
                         android:id="@+id/btn3"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
+                        android:fontFamily="@font/aclonica"
                         android:text="3"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorAccent"
                         android:textSize="24sp" />
 
                     <Button
@@ -261,8 +327,9 @@
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
+                        android:fontFamily="@font/aclonica"
                         android:text="4"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorAccent"
                         android:textSize="24sp" />
 
                     <Button
@@ -271,8 +338,20 @@
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
+                        android:fontFamily="@font/aclonica"
                         android:text="5"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="24sp" />
+
+                    <Button
+                        android:id="@+id/btnAc"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorMiniRed"
+                        android:fontFamily="@font/aclonica"
+                        android:text="Ac"
+                        android:textColor="@color/colorWhite"
                         android:textSize="24sp" />
 
                 </LinearLayout>
@@ -288,8 +367,9 @@
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
+                        android:fontFamily="@font/aclonica"
                         android:text="6"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorAccent"
                         android:textSize="24sp" />
 
                     <Button
@@ -298,8 +378,9 @@
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
+                        android:fontFamily="@font/aclonica"
                         android:text="7"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorAccent"
                         android:textSize="24sp" />
 
                     <Button
@@ -308,8 +389,9 @@
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
+                        android:fontFamily="@font/aclonica"
                         android:text="8"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorAccent"
                         android:textSize="24sp" />
 
                     <Button
@@ -318,8 +400,9 @@
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
+                        android:fontFamily="@font/aclonica"
                         android:text="9"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorAccent"
                         android:textSize="24sp" />
 
                 </LinearLayout>
@@ -335,8 +418,9 @@
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
+                        android:fontFamily="@font/aclonica"
                         android:text="A"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorAccent"
                         android:textSize="24sp" />
 
                     <Button
@@ -345,8 +429,9 @@
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
+                        android:fontFamily="@font/aclonica"
                         android:text="B"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorAccent"
                         android:textSize="24sp" />
 
                     <Button
@@ -355,8 +440,9 @@
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
+                        android:fontFamily="@font/aclonica"
                         android:text="C"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorAccent"
                         android:textSize="24sp" />
                 </LinearLayout>
 
@@ -372,8 +458,9 @@
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
+                        android:fontFamily="@font/aclonica"
                         android:text="D"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorAccent"
                         android:textSize="24sp" />
 
                     <Button
@@ -382,8 +469,9 @@
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
+                        android:fontFamily="@font/aclonica"
                         android:text="E"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorAccent"
                         android:textSize="24sp" />
 
                     <Button
@@ -392,8 +480,9 @@
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
+                        android:fontFamily="@font/aclonica"
                         android:text="F"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/colorAccent"
                         android:textSize="24sp" />
 
                 </LinearLayout>

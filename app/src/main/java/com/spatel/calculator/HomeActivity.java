@@ -1,24 +1,41 @@
 package com.spatel.calculator;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener,View.OnFocusChangeListener {
+
     private EditText edtBinary,edtHex,edtOctel,edtDesimal;
-    private Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnA,btnB,btnC,btnD,btnE,btnF,btnBack,btnSave,btnHistory;
+    private LinearLayout layout;
+    private Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnA,btnB,btnC,btnD,btnE,btnF,btnBack,btnCb,btnCo,btnCd,btnCh,btnSave,btnHistory;
     private EditText isHoverAndGetId;
     private Converter converter;
     private TextView txtb,txtd,txto,txth,hoverTeextId;
     private String desimal,binary,hexa,octel;
     private Boolean flag = true;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +64,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btnD = findViewById(R.id.btnD);
         btnE = findViewById(R.id.btnE);
         btnF = findViewById(R.id.btnF);
+        layout  = findViewById(R.id.llMe);
         btnBack = findViewById(R.id.btnBack);
+        //btnSave = findViewById(R.id.btnSave);
+        //btnHistory = findViewById(R.id.btnHistory);
+        btnCb = findViewById(R.id.btnCb);
+        btnCd = findViewById(R.id.btnCd);
+        btnCh = findViewById(R.id.btnCh);
+        btnCo = findViewById(R.id.btnCo);
 
         // texrt view refrence
         txtb = findViewById(R.id.txtBin);
@@ -72,11 +96,24 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btnE.setOnClickListener(this);
         btnF.setOnClickListener(this);
         btnBack.setOnClickListener(this);
-
+        //btnSave.setOnClickListener(this);
+        //btnHistory.setOnClickListener(this);
+        btnCo.setOnClickListener(this);
+        btnCh.setOnClickListener(this);
+        btnCd.setOnClickListener(this);
+        btnCb.setOnClickListener(this);
+        edtBinary.setOnClickListener(this);
+        edtDesimal.setOnClickListener(this);
+        edtHex.setOnClickListener(this);
+        edtOctel.setOnClickListener(this);
         edtBinary.setOnFocusChangeListener(this);
         edtOctel.setOnFocusChangeListener(this);
         edtHex.setOnFocusChangeListener(this);
         edtDesimal.setOnFocusChangeListener(this);
+
+        // Shared prefrences
+        preferences = getSharedPreferences("Data1",MODE_PRIVATE);
+        editor = preferences.edit();
 
         // create Instance of a object
         converter = new Converter();
@@ -114,7 +151,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         });
-
         edtDesimal.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2){ }
@@ -145,7 +181,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         });
-
         edtHex.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2){ }
@@ -176,7 +211,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         });
-
         edtOctel.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2){ }
@@ -209,6 +243,34 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.my_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.history:
+                Toast.makeText(this,"history",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.darkmode:
+                Toast.makeText(this,"darkMode",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.aboutUs:
+                Toast.makeText(this,"aboutUs",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.exit:
+                finish();
+                System.exit(0);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private void setTextOnEdittext(String desimal, String binary, String octel, String hexa) {
         edtDesimal.setText(desimal);
         edtHex.setText(hexa.toUpperCase());
@@ -217,6 +279,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         isHoverAndGetId.setSelection(isHoverAndGetId.getText().length());
         flag = true;
     }
+
 
     @Override
     public void onClick(View view) {
@@ -228,6 +291,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         String value = "";
         switch(id) {
             case R.id.btn0:
+
                 value = "0";
                 break;
             case R.id.btn1:
@@ -282,8 +346,41 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     isHoverAndGetId.setText(text);
                 }
                 break;
+            /*case R.id.btnSave:
+                break;
+            case R.id.btnHistory:
+                break;*/
+            case R.id.btnCo:
+                copyString("Octel",edtOctel.getText().toString());
+                break;
+            case R.id.btnCd:
+                copyString("Desimal",edtDesimal.getText().toString());
+                break;
+            case R.id.btnCb:
+                copyString("Binary",edtBinary.getText().toString());
+                break;
+            case R.id.btnCh:
+                copyString("Hexa-desimal",edtHex.getText().toString());
+                break;
         }
         isHoverAndGetId.append(value);
+    }
+
+    private void copyString(String label,String text) {
+
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText(label, text);
+        clipboard.setPrimaryClip(clip);
+
+        Toast toast = Toast.makeText(this,"Copied!",Toast.LENGTH_SHORT);
+        View view = toast.getView();
+
+        //Gets the actual oval background of the Toast then sets the colour filter
+        view.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_IN);
+        //Gets the TextView from the Toast so it can be editted
+        TextView t = view.findViewById(android.R.id.message);
+        t.setTextColor(getResources().getColor(R.color.colorDark));
+        toast.show();
     }
 
     @Override
