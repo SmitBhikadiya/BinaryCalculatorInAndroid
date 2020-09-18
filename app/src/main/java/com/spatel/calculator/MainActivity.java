@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        String num1 = edtNum1.getText().toString();
-        String num2 = edtNum2.getText().toString();
+        String num1 = edtNum1.getText().toString().toUpperCase();
+        String num2 = edtNum2.getText().toString().toUpperCase();
         String sp1 = spFirst.getSelectedItem().toString();
         String sp2 = spSecond.getSelectedItem().toString();
         if(!num1.equals("") || !num2.equals("")){
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     "\n\n---Binary---\n" + converter.desimalToBinary(sumD)+
                     "\n\n---Octel---\n" + converter.desimalToOctel(sumD)+
                     "\n\n---Hexa Desimal---\n" + converter.desimalToHexa(sumD);
-            txtResult.setText(sumD);
+            txtResult.setText(sumD.toUpperCase());
         }
         else{
             Toast.makeText(this,"Enter value first",Toast.LENGTH_SHORT).show();

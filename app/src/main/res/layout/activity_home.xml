@@ -48,7 +48,7 @@
                         android:gravity="center"
                         android:text="Bin"
                         android:textColor="@color/colorDark"
-                        android:textSize="25dp" />
+                        android:textSize="22dp" />
 
                     <EditText
                         android:id="@+id/edtBinary"
@@ -56,16 +56,18 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/btn_shape"
+                        android:digits="01"
                         android:drawablePadding="10dp"
                         android:ems="10"
                         android:gravity="top|left"
                         android:hint="Binary"
+                        android:inputType="number"
                         android:maxLines="5"
                         android:minLines="1"
                         android:padding="15dp"
                         android:textColor="@color/colorAccent"
                         android:textColorHint="@color/colorAccent"
-                        android:textSize="18sp" />
+                        android:textSize="22dp" />
 
                     <Button
                         android:id="@+id/btnCb"
@@ -101,7 +103,7 @@
                         android:gravity="center"
                         android:text="Des"
                         android:textColor="@color/colorDark"
-                        android:textSize="25dp" />
+                        android:textSize="22dp" />
 
                     <EditText
                         android:id="@+id/edtDesimal"
@@ -109,6 +111,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/btn_shape"
+                        android:digits="0123456789"
                         android:drawablePadding="10dp"
                         android:ems="10"
                         android:filterTouchesWhenObscured="false"
@@ -120,7 +123,7 @@
                         android:singleLine="true"
                         android:textColor="@color/colorAccent"
                         android:textColorHint="@color/colorAccent"
-                        android:textSize="18sp" />
+                        android:textSize="22dp" />
 
                     <Button
                         android:id="@+id/btnCd"
@@ -154,7 +157,7 @@
                         android:gravity="center"
                         android:text="Oct"
                         android:textColor="@color/colorDark"
-                        android:textSize="25dp" />
+                        android:textSize="22dp" />
 
                     <EditText
                         android:id="@+id/edtOctel"
@@ -162,6 +165,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/btn_shape"
+                        android:digits="01234567"
                         android:drawablePadding="10dp"
                         android:ems="10"
                         android:filterTouchesWhenObscured="false"
@@ -173,7 +177,7 @@
                         android:singleLine="true"
                         android:textColor="@color/colorAccent"
                         android:textColorHint="@color/colorAccent"
-                        android:textSize="18sp" />
+                        android:textSize="22dp" />
 
                     <Button
                         android:id="@+id/btnCo"
@@ -206,7 +210,7 @@
                         android:gravity="center"
                         android:text="Hex"
                         android:textColor="@color/colorDark"
-                        android:textSize="25dp" />
+                        android:textSize="22dp" />
 
                     <EditText
                         android:id="@+id/edtHex"
@@ -214,6 +218,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/btn_shape"
+                        android:digits="0123456789,ABCDEF,abcdef"
                         android:drawablePadding="10dp"
                         android:ems="10"
                         android:filterTouchesWhenObscured="false"
@@ -225,7 +230,7 @@
                         android:singleLine="true"
                         android:textColor="@color/colorAccent"
                         android:textColorHint="@color/colorAccent"
-                        android:textSize="18sp" />
+                        android:textSize="22dp" />
 
                     <Button
                         android:id="@+id/btnCh"

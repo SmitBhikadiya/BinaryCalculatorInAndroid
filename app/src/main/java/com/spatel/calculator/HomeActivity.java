@@ -133,17 +133,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 if(flag.equals(true)){
                     binary = edtBinary.getText().toString().trim();
                     if(binary.length() > 63){
-                        edtBinary.setError("You reached maximum lenght");
-                        edtOctel.setEnabled(false);
-                        edtHex.setEnabled(false);
-                        edtDesimal.setEnabled(false);
+                        Toast.makeText(getApplicationContext(),"You Reached Max Length",Toast.LENGTH_SHORT).show();
+                        edtBinary.setText(binary.substring(0,binary.length()-1));
+                        return;
                     }
                     else {
                         flag = false;
-                        edtBinary.setError(null);
-                        edtOctel.setEnabled(true);
-                        edtHex.setEnabled(true);
-                        edtDesimal.setEnabled(true);
                         desimal = converter.binaryToDesimal(binary);
                         octel = converter.desimalToOctel(desimal);
                         hexa = converter.desimalToHexa(desimal);
@@ -163,17 +158,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 if(flag.equals(true)){
                     desimal = edtDesimal.getText().toString().trim();
                     if(desimal.length() > 19){
-                        edtDesimal.setError("You reached maximum lenght");
-                        edtOctel.setEnabled(false);
-                        edtHex.setEnabled(false);
-                        edtBinary.setEnabled(false);
+                        Toast.makeText(getApplicationContext(),"You Reached Max Length",Toast.LENGTH_SHORT).show();
+                        edtDesimal.setText(desimal.substring(0,desimal.length()-1));
+                        return;
                     }
                     else {
                         flag = false;
-                        edtDesimal.setError(null);
-                        edtOctel.setEnabled(true);
-                        edtBinary.setEnabled(true);
-                        edtHex.setEnabled(true);
                         binary = converter.desimalToBinary(desimal);
                         octel = converter.desimalToOctel(desimal);
                         hexa = converter.desimalToHexa(desimal);
@@ -193,17 +183,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 if(flag.equals(true)){
                     hexa = edtHex.getText().toString().trim();
                     if(hexa.length() > 15){
-                        edtHex.setError("You reached maximum lenght");
-                        edtOctel.setEnabled(false);
-                        edtDesimal.setEnabled(false);
-                        edtBinary.setEnabled(false);
+                        Toast.makeText(getApplicationContext(),"You Reached Max Length",Toast.LENGTH_SHORT).show();
+                        edtHex.setText(hexa.substring(0,hexa.length()-1));
+                        return;
                     }
                     else {
                         flag = false;
-                        edtHex.setError(null);
-                        edtOctel.setEnabled(true);
-                        edtBinary.setEnabled(true);
-                        edtDesimal.setEnabled(true);
                         desimal = converter.hexaToDesimal(hexa);
                         binary = converter.desimalToBinary(desimal);
                         octel = converter.desimalToOctel(desimal);
@@ -223,17 +208,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 if(flag.equals(true)){
                     octel = edtOctel.getText().toString().trim();
                     if(octel.length() > 21){
-                        edtOctel.setError("You reached maximum lenght");
-                        edtBinary.setEnabled(false);
-                        edtHex.setEnabled(false);
-                        edtDesimal.setEnabled(false);
+                        Toast.makeText(getApplicationContext(),"You Reached Max Length",Toast.LENGTH_SHORT).show();
+                        edtOctel.setText(octel.substring(0,octel.length()-1));
+                        return;
                     }
                     else {
                         flag = false;
-                        edtOctel.setError(null);
-                        edtBinary.setEnabled(true);
-                        edtHex.setEnabled(true);
-                        edtDesimal.setEnabled(true);
                         desimal = converter.octelToDesimal(octel);
                         binary = converter.desimalToBinary(desimal);
                         hexa = converter.desimalToHexa(desimal);
