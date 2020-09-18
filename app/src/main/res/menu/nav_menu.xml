@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/home"
+            android:title="Home" />
+
+        <item
+            android:id="@+id/calculator"
+            android:icon="@drawable/wallet"
+            android:title="Calculator" />
+
+        <item
+            android:id="@+id/conversion"
+            android:icon="@drawable/wallet"
+            android:title="Conversion" />
+
+        <item
+            android:id="@+id/profile"
+            android:icon="@drawable/profile_icon"
+            android:title="Profile" />
+
+
+    </group>
+
+    <item android:title="Communicate">
+
+        <menu>
+
+            <item
+                android:id="@+id/share"
+                android:icon="@drawable/share"
+                android:title="Share" />
+
+            <item
+                android:id="@+id/rate"
+                android:icon="@drawable/rate"
+                android:title="Rate Us" />
+
+        </menu>
+    </item>
+
+    <item android:title="Rk University">
+
+        <menu>
+
+            <item
+                android:id="@+id/privacy"
+                android:icon="@drawable/privacy"
+                android:title="Privacy Policy" />
+
+            <item
+                android:id="@+id/terms"
+                android:icon="@drawable/policy"
+                android:title="Terms &amp; Condition" />
+
+            <item
+                android:id="@+id/exit"
+                android:icon="@drawable/exit"
+                android:title="Exit"></item>
+        </menu>
+    </item>
+
+</menu>

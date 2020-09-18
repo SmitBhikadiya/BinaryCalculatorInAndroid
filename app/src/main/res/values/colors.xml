@@ -8,4 +8,6 @@
     <color name="colorWhite">#FFF</color>
     <color name="colorGray">#cfcfcf</color>
 
+    <color name="colorIcon">#000000</color>
+
 </resources>
