@@ -40,7 +40,7 @@ public class Converter {
         {
             BigInteger b = new BigInteger(desimal);
             String s = b.toString();
-            return  Long.toBinaryString(Long.parseLong(s));
+            return Long.toBinaryString(Long.parseLong(s));
         }
         else {
             return "";
@@ -52,6 +52,7 @@ public class Converter {
             BigInteger b = new BigInteger(desimal);
             String s = b.toString();
             return  Long.toHexString(Long.parseLong(s));
+
         }
         else {
             return "";
@@ -70,10 +71,4 @@ public class Converter {
         }
     }
 
-    private String reverseString(String sum) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(sum);
-        sb = sb.reverse();
-        return String.valueOf(sb);
-    }
 }

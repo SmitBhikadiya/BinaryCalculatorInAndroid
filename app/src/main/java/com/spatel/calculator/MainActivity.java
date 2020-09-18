@@ -53,17 +53,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        String num1 = edtNum1.getText().toString().trim();
-        String num2 = edtNum2.getText().toString().trim();
+        String num1 = edtNum1.getText().toString();
+        String num2 = edtNum2.getText().toString();
         String sp1 = spFirst.getSelectedItem().toString();
         String sp2 = spSecond.getSelectedItem().toString();
-        Log.i("tag","1");
         if(!num1.equals("") || !num2.equals("")){
             switch (view.getId()){
                 case R.id.btnAdd:
-                    Log.i("tag","2");
                     sumD = getResult(num1,num2,sp1,sp2,"Add");
-                    Log.i("tag","4");
                     break;
                 case R.id.btnSub:
                     sumD = getResult(num1,num2,sp1,sp2,"Sub");
@@ -75,9 +72,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     sumD = getResult(num1,num2,sp1,sp2,"Mul");
                     break;
             }
+            sumD = "---Desimal---\n" + sumD +
+                    "\n\n---Binary---\n" + converter.desimalToBinary(sumD)+
+                    "\n\n---Octel---\n" + converter.desimalToOctel(sumD)+
+                    "\n\n---Hexa Desimal---\n" + converter.desimalToHexa(sumD);
             txtResult.setText(sumD);
-            Log.i("tag","5");
-
         }
         else{
             Toast.makeText(this,"Enter value first",Toast.LENGTH_SHORT).show();
@@ -88,32 +87,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String getResult(String n1,String n2,String sp1,String sp2,String str) {
         String result;
         switch (sp1){
-            case "OCtel":
+            case "OCT":
                 n1 = converter.octelToDesimal(n1);
                 break;
-            case "HexaDesimal":
+            case "HEX":
                 n1 = converter.hexaToDesimal(n1);
                 break;
-            case "Binary":
+            case "BIN":
                 n1 = converter.binaryToDesimal(n1);
                 break;
         }
         switch (sp2){
-            case "OCtel":
+            case "OCT":
                 n2 = converter.octelToDesimal(n2);
                 break;
-            case "HexaDesimal":
+            case "HEX":
                 n2 = converter.hexaToDesimal(n2);
                 break;
-            case "Binary":
+            case "BIN":
                 n2 = converter.binaryToDesimal(n2);
                 break;
         }
         BigInteger b1 = new BigInteger(n1);
         if(str.equals("Add")){
-            Log.i("tag","3");
             result = b1.add(new BigInteger(n2)).toString();
-            Log.i("tag", String.valueOf(result));
         }
         else if(str.equals("Sub")){
             result = b1.subtract(new BigInteger(n2)).toString();
