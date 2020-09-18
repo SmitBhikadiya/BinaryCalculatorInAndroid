@@ -2,7 +2,6 @@ package com.spatel.calculator;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -28,7 +27,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     private EditText edtBinary,edtHex,edtOctel,edtDesimal;
     private LinearLayout layout;
-    private Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnA,btnB,btnC,btnD,btnE,btnF,btnBack,btnCb,btnCo,btnCd,btnCh,btnSave,btnHistory;
+    private Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnA,btnB,btnC,btnD,btnE,btnF,btnDel,btnAc,btnCb,btnCo,btnCd,btnCh,btnSave,btnHistory;
     private EditText isHoverAndGetId;
     private Converter converter;
     private TextView txtb,txtd,txto,txth,hoverTeextId;
@@ -65,7 +64,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btnE = findViewById(R.id.btnE);
         btnF = findViewById(R.id.btnF);
         layout  = findViewById(R.id.llMe);
-        btnBack = findViewById(R.id.btnBack);
+        btnDel = findViewById(R.id.btnDel);
+        btnAc = findViewById(R.id.btnAc);
         //btnSave = findViewById(R.id.btnSave);
         //btnHistory = findViewById(R.id.btnHistory);
         btnCb = findViewById(R.id.btnCb);
@@ -95,7 +95,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         btnD.setOnClickListener(this);
         btnE.setOnClickListener(this);
         btnF.setOnClickListener(this);
-        btnBack.setOnClickListener(this);
+        btnDel.setOnClickListener(this);
+        btnAc.setOnClickListener(this);
         //btnSave.setOnClickListener(this);
         //btnHistory.setOnClickListener(this);
         btnCo.setOnClickListener(this);
@@ -259,6 +260,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.darkmode:
                 Toast.makeText(this,"darkMode",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(HomeActivity.this,MainActivity.class);
+                startActivity(intent);
+                finish();
                 break;
             case R.id.aboutUs:
                 Toast.makeText(this,"aboutUs",Toast.LENGTH_SHORT).show();
@@ -339,12 +343,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnF:
                 value = "F";
                 break;
-            case R.id.btnBack:
+            case R.id.btnDel:
                 if(!text.equals("")){
                     text = text.substring(0,text.length()-1);
                     value = "";
                     isHoverAndGetId.setText(text);
                 }
+                break;
+            case R.id.btnAc:
+                edtBinary.setText("");
                 break;
             /*case R.id.btnSave:
                 break;

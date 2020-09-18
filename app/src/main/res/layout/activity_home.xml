@@ -19,9 +19,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="20dp"
-            android:gravity="center"
             android:orientation="vertical"
             android:padding="10dp">
 
@@ -80,7 +79,7 @@
                         android:fontFamily="@font/aclonica"
                         android:gravity="center"
                         android:hint="copy the string"
-                        android:text="copy"
+                        android:text="co\npy"
                         android:textAlignment="center"
                         android:textColor="@color/colorWhite"
                         android:textSize="18sp" />
@@ -133,7 +132,7 @@
                         android:fontFamily="@font/aclonica"
                         android:gravity="center"
                         android:hint="copy the string"
-                        android:text="copy"
+                        android:text="co\npy"
                         android:textAlignment="center"
                         android:textColor="@color/colorWhite"
                         android:textSize="18sp" />
@@ -186,7 +185,7 @@
                         android:fontFamily="@font/aclonica"
                         android:gravity="center"
                         android:hint="copy the string"
-                        android:text="copy"
+                        android:text="co\npy"
                         android:textAlignment="center"
                         android:textColor="@color/colorWhite"
                         android:textSize="18sp" />
@@ -238,7 +237,7 @@
                         android:fontFamily="@font/aclonica"
                         android:gravity="center"
                         android:hint="copy the string"
-                        android:text="copy"
+                        android:text="co\npy"
                         android:textAlignment="center"
                         android:textColor="@color/colorWhite"
                         android:textSize="18sp" />
@@ -248,7 +247,7 @@
             <LinearLayout
                 android:id="@+id/llKeypad"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="250sp"
                 android:layout_gravity="center"
                 android:clickable="false"
                 android:orientation="vertical">
@@ -256,13 +255,14 @@
                 <LinearLayout
                     android:id="@+id/llMe"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/btn0"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
                         android:fontFamily="@font/aclonica"
@@ -273,7 +273,7 @@
                     <Button
                         android:id="@+id/btn1"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
                         android:fontFamily="@font/aclonica"
@@ -284,7 +284,7 @@
                     <Button
                         android:id="@+id/btn2"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
                         android:fontFamily="@font/aclonica"
@@ -293,9 +293,9 @@
                         android:textSize="24sp" />
 
                     <Button
-                        android:id="@+id/btnBack"
+                        android:id="@+id/btnDel"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/colorMiniRed"
                         android:fontFamily="@font/aclonica"
@@ -306,14 +306,14 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/btn3"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
                         android:fontFamily="@font/aclonica"
@@ -324,7 +324,7 @@
                     <Button
                         android:id="@+id/btn4"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
                         android:fontFamily="@font/aclonica"
@@ -335,7 +335,7 @@
                     <Button
                         android:id="@+id/btn5"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
                         android:fontFamily="@font/aclonica"
@@ -346,7 +346,7 @@
                     <Button
                         android:id="@+id/btnAc"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/colorMiniRed"
                         android:fontFamily="@font/aclonica"
@@ -358,13 +358,14 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/btn6"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
                         android:fontFamily="@font/aclonica"
@@ -375,7 +376,7 @@
                     <Button
                         android:id="@+id/btn7"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
                         android:fontFamily="@font/aclonica"
@@ -386,7 +387,7 @@
                     <Button
                         android:id="@+id/btn8"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
                         android:fontFamily="@font/aclonica"
@@ -397,7 +398,7 @@
                     <Button
                         android:id="@+id/btn9"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
                         android:fontFamily="@font/aclonica"
@@ -409,13 +410,14 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/btnA"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
                         android:fontFamily="@font/aclonica"
@@ -426,7 +428,7 @@
                     <Button
                         android:id="@+id/btnB"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
                         android:fontFamily="@font/aclonica"
@@ -437,7 +439,7 @@
                     <Button
                         android:id="@+id/btnC"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
                         android:fontFamily="@font/aclonica"
@@ -448,14 +450,14 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/btnD"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
                         android:fontFamily="@font/aclonica"
@@ -466,7 +468,7 @@
                     <Button
                         android:id="@+id/btnE"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
                         android:fontFamily="@font/aclonica"
@@ -477,7 +479,7 @@
                     <Button
                         android:id="@+id/btnF"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/btn_keypad_shape"
                         android:fontFamily="@font/aclonica"
