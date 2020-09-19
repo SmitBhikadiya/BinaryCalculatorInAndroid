@@ -3,9 +3,7 @@ package com.spatel.calculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.InputType;
-import android.text.TextWatcher;
 import android.text.method.DigitsKeyListener;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,7 +13,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
 
 import java.math.BigInteger;
 
@@ -124,13 +121,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 txtResultOct.setText("Octel\n"+converter.desimalToOctel(sumD));
                 txtResultHex.setText("HexaDesimal\n"+converter.desimalToHexa(sumD).toUpperCase());
             }catch (NumberFormatException e){
-                Toast.makeText(this,"enter a small number",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Too large number not allowed",Toast.LENGTH_SHORT).show();
                 return;
             }
             setBackgroundOnText(getResources().getColor(R.color.colorAccent),getResources().getColor(R.color.colorWhite));
         }
         else{
-            Toast.makeText(this,"too large number not allowed",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Enter a number first",Toast.LENGTH_SHORT).show();
             setBackgroundOnText(getResources().getColor(R.color.colorDark),getResources().getColor(R.color.colorDark));
             return;
         }
