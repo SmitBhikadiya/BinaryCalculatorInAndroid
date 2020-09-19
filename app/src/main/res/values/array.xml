@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="converter">
-        <item>DES</item>
         <item>BIN</item>
         <item>OCT</item>
         <item>HEX</item>
+        <item>DES</item>
     </string-array>
 </resources>
