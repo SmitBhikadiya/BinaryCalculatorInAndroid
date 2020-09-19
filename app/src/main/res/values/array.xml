@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="converter">
-        <item>BIN</item>
-        <item>OCT</item>
-        <item>HEX</item>
-        <item>DES</item>
+        <item>Binary</item>
+        <item>Octel</item>
+        <item>HexaDesimal</item>
+        <item>Desimal</item>
     </string-array>
 </resources>

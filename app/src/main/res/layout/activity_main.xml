@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -31,7 +31,7 @@
                     android:id="@+id/textView2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.5"
                     android:gravity="center"
                     android:text="Select type of number  :"
                     android:textColor="@color/colorAccent"
@@ -42,53 +42,94 @@
                     android:id="@+id/spFirst"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_weight="1"
+                    android:layout_weight="1.5"
                     android:entries="@array/converter"
                     android:gravity="clip_horizontal"
                     android:spinnerMode="dropdown" />
+
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/edtNum1"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawablePadding="10dp"
-                android:ems="10"
-                android:gravity="top|left"
-                android:hint="First Number"
-                android:inputType="text"
-                android:maxLines="5"
-                android:minLines="1"
-                android:padding="15dp"
-                android:textColor="@color/colorAccent"
-                android:textColorHint="@color/colorAccent"
-                android:textSize="18sp" />
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/edtNum2"
+                <EditText
+                    android:id="@+id/edtNum1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_shape"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:gravity="top|left"
+                    android:hint="First Number"
+                    android:padding="12dp"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorAccent"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/btnPaste1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="5"
+                    android:background="@color/colorMiniRed"
+                    android:fontFamily="@font/aclonica"
+                    android:text="Pa\ns\nte"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="14sp"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawablePadding="10dp"
-                android:ems="10"
-                android:gravity="top|left"
-                android:hint="Second Number"
-                android:inputType="text"
-                android:maxLines="5"
-                android:minLines="1"
-                android:padding="15dp"
-                android:textColor="@color/colorAccent"
-                android:textColorHint="@color/colorAccent"
-                android:textSize="18sp" />
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/edtNum2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_shape"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:gravity="top|left"
+                    android:hint="Second Number"
+                    android:padding="12dp"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorAccent"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/btnPaste2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="5"
+                    android:background="@color/colorMiniRed"
+                    android:fontFamily="@font/aclonica"
+                    android:text="Pa\ns\nte"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="14sp"
+                    android:textStyle="italic" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorGray"
+                android:background="@color/colorAccent"
                 android:orientation="vertical"
-                android:paddingLeft="50dp"
-                android:paddingRight="50dp">
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -101,7 +142,7 @@
                         android:layout_height="match_parent"
                         android:layout_margin="1dp"
                         android:layout_weight="1"
-                        android:background="@color/colorWhite"
+                        android:background="@drawable/btn_keypad_shape"
                         android:fontFamily="sans-serif"
                         android:text="+"
                         android:textColor="@color/colorAccent"
@@ -114,18 +155,12 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="1dp"
                         android:layout_weight="1"
-                        android:background="@color/colorWhite"
+                        android:background="@drawable/btn_keypad_shape"
                         android:fontFamily="sans-serif"
                         android:text="-"
                         android:textColor="@color/colorAccent"
                         android:textSize="40dp"
                         android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/btnMul"
@@ -133,7 +168,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="1dp"
                         android:layout_weight="1"
-                        android:background="@color/colorWhite"
+                        android:background="@drawable/btn_keypad_shape"
                         android:fontFamily="sans-serif"
                         android:text="x"
                         android:textColor="@color/colorAccent"
@@ -146,13 +181,32 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="1dp"
                         android:layout_weight="1"
-                        android:background="@color/colorWhite"
+                        android:background="@drawable/btn_keypad_shape"
                         android:fontFamily="sans-serif"
                         android:text="/"
                         android:textColor="@color/colorAccent"
                         android:textSize="40sp"
                         android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btnClear"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_keypad_shape"
+                        android:text="clear"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16dp" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <TextView
