@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,14 +21,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.math.BigInteger;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnFocusChangeListener {
 
-    private Button btnAdd, btnSub, btnMul, btnDiv, btnPaste1, btnPaste2, btnClear;
-    private EditText edtNum1, edtNum2;
+    private Button btnAdd, btnSub, btnMul, btnDiv, btnPaste1, btnPaste2, btnClear,btnA,btnB,btnC,btnD,btnE,btnF;
+    private EditText edtNum1, edtNum2, edtSelect;
     private TextView txtResultBin, txtResultHex, txtResultOct, txtResultDes;
     private Spinner spinner;
     private Converter converter;
     private String sumD = "";
+    private LinearLayout ll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnPaste1 = findViewById(R.id.btnPaste1);
         btnPaste2 = findViewById(R.id.btnPaste2);
         btnClear = findViewById(R.id.btnClear);
+        btnA = findViewById(R.id.btnA);
+        btnB = findViewById(R.id.btnB);
+        btnC = findViewById(R.id.btnC);
+        btnD = findViewById(R.id.btnD);
+        btnE = findViewById(R.id.btnE);
+        btnF = findViewById(R.id.btnF);
+
+        ll = findViewById(R.id.hexaDigits);
 
         txtResultBin = findViewById(R.id.txtResultBin);
         txtResultDes = findViewById(R.id.txtResultDes);
@@ -54,6 +64,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         converter = new Converter();
 
+        edtNum2.setOnFocusChangeListener(this);
+        edtNum1.setOnFocusChangeListener(this);
         btnAdd.setOnClickListener(this);
         btnDiv.setOnClickListener(this);
         btnMul.setOnClickListener(this);
@@ -61,6 +73,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnPaste1.setOnClickListener(this);
         btnPaste2.setOnClickListener(this);
         btnClear.setOnClickListener(this);
+        btnA.setOnClickListener(this);
+        btnB.setOnClickListener(this);
+        btnC.setOnClickListener(this);
+        btnD.setOnClickListener(this);
+        btnE.setOnClickListener(this);
+        btnF.setOnClickListener(this);
+
+
+        edtSelect = edtNum1;
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -79,12 +100,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void setDigitAccordingToSpinner(String sp1) {
         switch (sp1) {
             case "Octel":
+                ll.setVisibility(View.GONE);
                 edtNum1.setMaxLines(1);
                 edtNum2.setMaxLines(1);
                 edtNum1.setKeyListener(DigitsKeyListener.getInstance("0123456"));
                 edtNum2.setKeyListener(DigitsKeyListener.getInstance("0123456"));
                 break;
             case "HexaDesimal":
+                ll.setVisibility(View.VISIBLE);
                 edtNum1.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
                 edtNum2.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
                 edtNum1.setMaxLines(1);
@@ -93,12 +116,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 edtNum2.setKeyListener(DigitsKeyListener.getInstance("0123456789ABCDEF"));
                 break;
             case "Binary":
+                ll.setVisibility(View.GONE);
                 edtNum1.setMaxLines(3);
                 edtNum2.setMaxLines(3);
                 edtNum1.setKeyListener(DigitsKeyListener.getInstance("01"));
                 edtNum2.setKeyListener(DigitsKeyListener.getInstance("01"));
                 break;
             case "Desimal":
+                ll.setVisibility(View.GONE);
                 edtNum1.setMaxLines(1);
                 edtNum2.setMaxLines(1);
                 edtNum1.setKeyListener(DigitsKeyListener.getInstance("0123456789"));
@@ -119,10 +144,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 edtNum2.setSelection(edtNum2.getText().length());
                 break;
             case R.id.btnClear:
-                edtNum1.setText("");
-                edtNum2.setText("");
+                edtSelect.setText("");
+                break;
+            case R.id.btnA:
+                edtSelect.setText(edtSelect.getText().toString()+"A");
+                break;
+            case R.id.btnB:
+                edtSelect.setText(edtSelect.getText().toString()+"B");
+                break;
+            case R.id.btnC:
+                edtSelect.setText(edtSelect.getText().toString()+"C");
+                break;
+            case R.id.btnD:
+                edtSelect.setText(edtSelect.getText().toString()+"D");
+                break;
+            case R.id.btnE:
+                edtSelect.setText(edtSelect.getText().toString()+"E");
+                break;
+            case R.id.btnF:
+                edtSelect.setText(edtSelect.getText().toString()+"F");
                 break;
         }
+        edtSelect.setSelection(edtSelect.getText().length());
         String num1 = edtNum1.getText().toString().toUpperCase();
         String num2 = edtNum2.getText().toString().toUpperCase();
         String sp1 = spinner.getSelectedItem().toString();
@@ -216,5 +259,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             result = b1.multiply(new BigInteger(n2)).toString();
         }
         return result;
+    }
+
+    @Override
+    public void onFocusChange(View view, boolean b) {
+        switch (view.getId()){
+            case R.id.edtNum1:
+                edtSelect = edtNum1;
+                break;
+            case R.id.edtNum2:
+                edtSelect = edtNum2;
+                break;
+        }
     }
 }
